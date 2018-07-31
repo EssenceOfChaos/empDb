@@ -1,21 +1,100 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<mat-toolbar color="primary">
+  <span>Employee Database</span>
+  <span class="spacer"></span>
+  <mat-icon>account_box</mat-icon>
+</mat-toolbar>
+<div class="ui container">
+  <div class="ui grid">
+    <div class="ten wide column">
+      <h1>
+        Welcome to {{ title }}!
+      </h1>
+      <!--Employee Form-->
+      <form [formGroup]="employeeForm" novalidate class="employee-form" (ngSubmit)="onSubmit()">
+        <fieldset>
+          <legend>Employee Info</legend>
+          <!--First name field-->
+          <mat-form-field appearance="standard">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="First name" formControlName="firstName">
+            <mat-hint></mat-hint>
+          </mat-form-field>
+          <!--Last name field-->
+          <mat-form-field appearance="standard">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Last name" formControlName="lastName">
+            <mat-hint></mat-hint>
+          </mat-form-field>
+          <!--Street address field-->
+          <p>
+            <mat-form-field class="full-width">
+              <textarea matInput placeholder="Street address" required formControlName="streetAddress"></textarea>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+              <textarea matInput placeholder="Address 2"></textarea>
+            </mat-form-field>
+          </p>
+          <!--City field-->
+          <table class="full-width" cellspacing="0">
+            <tr>
+              <td>
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="City" formControlName="city">
+                </mat-form-field>
+              </td>
+              <!--State select field-->
+              <td>
+                <mat-form-field class="full-width">
+                  <mat-select placeholder="State" formControlName="state">
+                    <mat-option>None</mat-option>
+                    <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+              <!--Postal code field-->
+              <td>
+                <mat-form-field class="full-width">
+                  <input matInput #postalCode maxlength="5" placeholder="Postal Code" required formControlName="postalCode">
+                  <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+          <!--Company select field-->
+          <p>
+            <mat-form-field>
+              <mat-select placeholder="Company" formControlName="companyControl">
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let company of companies" [value]="company.name">
+                  {{company.name}}
+                </mat-option>
+              </mat-select>
+              <mat-hint></mat-hint>
+            </mat-form-field>
+          </p>
+          <!--Salary field-->
+          <p>
+            <mat-form-field>
+              <input matInput placeholder="Salary" type="number" class="right-align" formControlName="salary">
+              <span matPrefix>$&nbsp;</span>
+              <span matSuffix>.00</span>
+            </mat-form-field>
+          </p>
+        </fieldset>
+      </form>
+      <br>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!employeeForm.valid" (click)="onSubmit(employeeForm.values)">Submit</button>
+    </div>
+    <div class="two wide column">
+      <p>
+        Form Status: {{ employeeForm.status }}
+      </p>
+      <p>
+        Form Value: {{ employeeForm.value | json }}
+      </p>
+    </div>
+    <div class="two wide column"></div>
+    <div class="two wide column"></div>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
 <router-outlet></router-outlet>
