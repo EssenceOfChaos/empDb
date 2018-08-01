@@ -7,7 +7,11 @@ const EMPLOYEES_COLLECTION = "employees";
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors());
+// CORS is required for resource sharing in development
+// app.use(cors());
+// Create link to Angular build directory
+var distDir = __dirname + "/dist/";
+app.use(express.static(distDir));
 let db;
 
 // Connect to the database before starting the application server.

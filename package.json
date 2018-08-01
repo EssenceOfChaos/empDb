@@ -3,19 +3,23 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "backend": "node server.js",
-    "dev": "npm-run-all --parallel start backend",
+    "angular-dev": "ng serve",
+    "dev": "npm-run-all --parallel backend angular-dev",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --output-path dist"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^6.1.0",
     "@angular/cdk": "^6.4.2",
+    "@angular/cli": "~6.0.8",
     "@angular/common": "^6.0.3",
+    "@angular/compiler-cli": "^6.0.3",
     "@angular/compiler": "^6.0.3",
     "@angular/core": "^6.0.3",
     "@angular/forms": "^6.0.3",
@@ -35,8 +39,8 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.8",
-    "@angular/cli": "~6.0.8",
-    "@angular/compiler-cli": "^6.0.3",
+
+
     "@angular/language-service": "^6.0.3",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
