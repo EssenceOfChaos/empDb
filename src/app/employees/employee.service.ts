@@ -7,7 +7,7 @@ import { catchError, retry } from 'rxjs/operators';
 
 @Injectable()
 export class EmployeeService {
-  private employeesUrl = 'localhost:8080/api/employees';
+  private employeesUrl = '/api/employees';
 
   constructor(private http: HttpClient) {}
   // get("/api/employees")
