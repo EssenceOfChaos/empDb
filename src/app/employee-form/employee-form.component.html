@@ -1,3 +1,89 @@
-<p>
-  employee-form works!
-</p>
+<div class="ui container">
+  <div class="ui grid">
+    <div class="ten wide column">
+
+      <!--Employee Form-->
+      <form [formGroup]="employeeForm" novalidate class="employee-form" (ngSubmit)="onSubmit()">
+        <fieldset>
+          <legend>Employee Info</legend>
+          <!--First name field-->
+          <mat-form-field appearance="standard">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="First name" formControlName="firstName">
+            <mat-hint></mat-hint>
+          </mat-form-field>
+          <!--Last name field-->
+          <mat-form-field appearance="standard">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Last name" formControlName="lastName" required>
+            <mat-hint></mat-hint>
+          </mat-form-field>
+          <!--Street address field-->
+          <p>
+            <mat-form-field class="full-width">
+              <textarea matInput placeholder="Street address" required formControlName="streetAddress"></textarea>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+              <textarea matInput placeholder="Address 2"></textarea>
+            </mat-form-field>
+          </p>
+          <!--City field-->
+          <table class="full-width" cellspacing="0">
+            <tr>
+              <td>
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="City" formControlName="city">
+                </mat-form-field>
+              </td>
+              <!--State select field-->
+              <td>
+                <mat-form-field class="full-width">
+                  <mat-select placeholder="State" formControlName="state">
+                    <mat-option>None</mat-option>
+                    <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+              <!--Postal code field-->
+              <td>
+                <mat-form-field class="full-width">
+                  <input matInput #postalCode maxlength="5" placeholder="Postal Code" required formControlName="postalCode">
+                  <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+          <!--Company select field-->
+          <p>
+            <mat-form-field>
+              <mat-select placeholder="Company" formControlName="company" required>
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let company of companies" [value]="company.name">
+                  {{company.name}}
+                </mat-option>
+              </mat-select>
+              <mat-hint></mat-hint>
+            </mat-form-field>
+          </p>
+          <!--Salary field-->
+          <p>
+            <mat-form-field>
+              <input matInput placeholder="Salary" type="number" class="right-align" formControlName="salary">
+              <span matPrefix>$&nbsp;</span>
+              <span matSuffix>.00</span>
+            </mat-form-field>
+          </p>
+        </fieldset>
+      </form>
+      <br>
+      <button class="ui button primary-color" type="submit" [disabled]="!employeeForm.valid" (click)="onSubmit(employeeForm.values)">Submit</button>
+    </div>
+    <div class="four wide column">
+      <p>
+        Form Status: {{ employeeForm.status }}
+      </p>
+
+    </div>
+    <div class="two wide column"></div>
+  </div>
+</div>
