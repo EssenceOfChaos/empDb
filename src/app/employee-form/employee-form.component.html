@@ -46,7 +46,7 @@
             </td>
             <!--Postal code field-->
             <td>
-              <mat-form-field class="full-width">
+              <mat-form-field class="full-width" style="padding-bottom: 0px;">
                 <input matInput #postalCode maxlength="5" placeholder="Postal Code" required formControlName="postalCode">
                 <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
               </mat-form-field>
@@ -79,12 +79,17 @@
     <button class="ui button primary-color" type="submit" [disabled]="!employeeForm.valid" (click)="onSubmit(employeeForm.values)">Submit</button>
   </div>
   <div class="four wide column">
-    <p>
-      Form Result:
-    </p>
-    <br>
-    <p>{{formResult}}</p>
-    <hr>
+    <ng-container *ngIf="submitted === true">
+      <p>Last Employee:</p>
+      <hr>
+      <p>{{lastEmployee.firstName}}</p>
+      <p>{{lastEmployee.lastName}}</p>
+      <p>{{lastEmployee.streetAddress}}</p>
+      <p>{{lastEmployee.city}}</p>
+      <p>{{lastEmployee.postalCode}}</p>
+      <p>{{lastEmployee.company}}</p>
+      <p>{{lastEmployee.salary}}</p>
+    </ng-container>
   </div>
 
   <div class="ten wide column">

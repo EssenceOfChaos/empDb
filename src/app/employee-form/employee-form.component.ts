@@ -10,7 +10,7 @@ import { last } from 'rxjs/operators';
   styleUrls: ['./employee-form.component.css'],
 })
 export class EmployeeFormComponent {
-  formResult;
+  lastEmployee;
   submitted = false;
   constructor(private employeeService: EmployeeService) {}
 
@@ -87,9 +87,15 @@ export class EmployeeFormComponent {
     // console.log(this.employeeForm.value);
     this.readBackData();
     this.employeeForm.reset();
+    this.submitted = true;
   }
 
   readBackData() {
-    this.formResult = this.employeeService.getLastEmployee;
+    this.employeeService.getLastEmployee().subscribe(res => {
+      if (res) {
+        console.log(res);
+        this.lastEmployee = this.lastEmployee = res[res.length - 1];
+      }
+    });
   }
 }

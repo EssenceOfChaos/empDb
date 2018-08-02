@@ -1,0 +1,28 @@
+[{
+    "firstName": "Freddy",
+    "lastName": "Schiller",
+    "streetAddress": "123 Sesame st",
+    "city": "Big Apple",
+    "postalCode": "12345",
+    "company": "IBM",
+    "salary": 110000
+  },
+  {
+    "firstName": "Bob",
+    "lastName": "Hope",
+    "streetAddress": "456 Comedy ln",
+    "city": "Small town",
+    "postalCode": "10102",
+    "company": "Apple",
+    "salary": 7000
+  },
+  {
+    "firstName": "William",
+    "lastName": "Clinton",
+    "streetAddress": "100 Pennsylvania ave",
+    "city": "Distict of Columbia",
+    "postalCode": "10098",
+    "company": "Tesla",
+    "salary": 250000
+  }
+]

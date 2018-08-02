@@ -33,15 +33,25 @@ export class EmployeeService {
     return this.http.post<Employee>(this.employeesUrl, employee).pipe(catchError(this.handleError));
   }
 
-  getLastEmployee() {
-    return this.http.get<Employee[]>(this.employeesUrl);
+  getLastEmployee(): Observable<any> {
+    return this.http.get(this.employeesUrl).pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
+  // testing in development with hard coded json
+  // getLastEmployee(): Observable<any> {
+  //   return this.http.get('/assets/test-data.json').pipe(
+  //     retry(3),
+  //     catchError(this.handleError)
+  //   );
+  // }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.error.message);
     } else {
-      console.error(`Backend returned code ${error.status}, ` + `body was: ${error.error}`);
+      console.error(`Returned code ${error.status}, ` + `body was: ${error.error}`);
     }
     return throwError('Something went wrong; please try again later.');
   }

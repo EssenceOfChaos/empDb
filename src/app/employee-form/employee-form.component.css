@@ -17,3 +17,15 @@
   color: ghostwhite;
   box-shadow: 0 10px 30px rgba(0, 0, 0, .14)
 }
+
+.mat-form-field-appearance-legacy div.mat-form-field-wrapper {
+  padding-bottom: 2px;
+}
+
+.mat-form-field {
+  line-height: 1.0;
+}
+
+body>app-root>app-employee-form>div>div:nth-child(1)>form>fieldset>p:nth-child(4)>mat-form-field.full-width.mat-form-field.ng-tns-c4-3.mat-primary.mat-form-field-type-mat-input.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-hide-placeholder>div {
+  padding: 2px;
+}
