@@ -10,9 +10,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { EmployeeFormComponent } from './employee-form/employee-form.component';
 
 import { EmployeeService } from './employees/employee.service';
+import { CompaniesComponent } from './companies/companies.component';
+import { CompanyService } from './companies/company.service';
 
 @NgModule({
-  declarations: [AppComponent, EmployeeFormComponent],
+  declarations: [AppComponent, EmployeeFormComponent, CompaniesComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -21,7 +23,7 @@ import { EmployeeService } from './employees/employee.service';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [EmployeeService],
+  providers: [EmployeeService, CompanyService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

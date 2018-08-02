@@ -9,7 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTabsModule } from '@angular/material/tabs';
 @NgModule({
   imports: [CommonModule],
   exports: [
@@ -21,7 +21,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatGridListModule,
     MatToolbarModule,
     MatSelectModule,
-    MatTooltipModule,
+    MatTabsModule,
   ],
   declarations: [],
 })

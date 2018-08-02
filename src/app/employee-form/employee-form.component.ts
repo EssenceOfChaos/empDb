@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { Validators, FormControl, FormGroup } from '@angular/forms';
 import { EmployeeService } from '../employees/employee.service';
-
-// Company Interface
-export interface Company {
-  name: string;
-  symbol: string;
-}
+import { COMPANIES } from '../companies/companies';
+import { last } from 'rxjs/operators';
 
 @Component({
   selector: 'app-employee-form',
@@ -14,7 +10,7 @@ export interface Company {
   styleUrls: ['./employee-form.component.css'],
 })
 export class EmployeeFormComponent {
-  employees = [];
+  formResult;
   submitted = false;
   constructor(private employeeService: EmployeeService) {}
 
@@ -28,14 +24,9 @@ export class EmployeeFormComponent {
     company: new FormControl('', [Validators.required]),
     salary: new FormControl(''),
   });
-  companies: Company[] = [
-    { name: 'Tesla', symbol: 'TSLA' },
-    { name: 'IBM', symbol: 'IBM' },
-    { name: 'Apple', symbol: 'AAPL' },
-    { name: 'Facebook', symbol: 'FB' },
-    { name: 'General Electric', symbol: 'GE' },
-    { name: 'Twitter', symbol: 'TWTR' },
-  ];
+
+  companies = COMPANIES;
+
   states: string[] = [
     'Alabama',
     'Alaska',
@@ -93,7 +84,12 @@ export class EmployeeFormComponent {
     this.employeeService
       .createEmployee(this.employeeForm.value)
       .subscribe(res => console.log(`Employee Form Component - Employee created with result: ${res}`));
-    console.log(this.employeeForm.value);
+    // console.log(this.employeeForm.value);
+    this.readBackData();
     this.employeeForm.reset();
+  }
+
+  readBackData() {
+    this.formResult = this.employeeService.getLastEmployee;
   }
 }
