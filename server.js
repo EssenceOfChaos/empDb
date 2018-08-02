@@ -55,6 +55,19 @@ app.get("/api/employees", function (req, res) {
     }
   });
 });
+/*  "/api/companies"
+ *    GET: finds all companies
+ */
+
+app.get("/api/companies", function (req, res) {
+  db.collection(COMPANIES_COLLECTION).find({}).toArray(function (err, docs) {
+    if (err) {
+      handleError(res, err.message, "Failed to get companies.");
+    } else {
+      res.status(200).json(docs);
+    }
+  });
+});
 
 app.post("/api/employees", function (req, res) {
   let newEmployee = req.body;
@@ -67,14 +80,15 @@ app.post("/api/employees", function (req, res) {
     }
   });
 
-  app.get("/api/companies", function (req, res) {
-    db.collection(COMPANIES_COLLECTION).find({}).toArray(function (err, docs) {
-      if (err) {
-        handleError(res, err.message, "Failed to get companies.");
-      } else {
-        res.status(200).json(docs);
-      }
-    });
-  });
+
+  // app.get("/api/companies", function (req, res) {
+  //   db.collection(COMPANIES_COLLECTION).find({}).toArray(function (err, docs) {
+  //     if (err) {
+  //       handleError(res, err.message, "Failed to get companies.");
+  //     } else {
+  //       res.status(200).json(docs);
+  //     }
+  //   });
+  // });
 
 });
