@@ -58,6 +58,10 @@ export class EmployeeService {
         return '5b62a497e7179a07334478ce';
         break;
       }
+      default: {
+        // statements;
+        break;
+      }
     }
   }
 
