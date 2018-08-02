@@ -10,6 +10,11 @@ export class CompaniesComponent implements OnInit {
   companies;
   constructor(private companiesService: CompanyService) {}
   ngOnInit() {
-    this.companies = this.companiesService.getCompanies();
+    this.companies = this.companiesService.getCompanies().subscribe(res => {
+      if (res) {
+        console.log(res);
+        this.companies = res;
+      }
+    });
   }
 }
