@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Employee } from './employee';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-// import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { last } from 'rxjs/operators';
 
 @Injectable()
 export class EmployeeService {
-  private employeesUrl = '/api/employees';
+  private employeesUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
   // get("/api/employees")
