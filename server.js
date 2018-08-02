@@ -4,35 +4,36 @@ const mongodb = require("mongodb");
 const ObjectID = mongodb.ObjectID;
 const cors = require('cors');
 const EMPLOYEES_COLLECTION = "employees";
+const COMPANIES_COLLECTION = "companies"
 
 const app = express();
 app.use(bodyParser.json());
 // CORS is required for resource sharing in development
 // app.use(cors());
-// Create link to Angular build directory
+
 var distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
 let db;
 
-// Connect to the database before starting the application server.
+// Connect to MLAB or local db
 mongodb.MongoClient.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/empdb_dev", function (err, client) {
   if (err) {
     console.log(err);
     process.exit(1);
   }
 
-  // Save database object from the callback for reuse.
+
   db = client.db();
   console.log("Database connection ready");
 
-  // Initialize the app.
+  // Initialization
   let server = app.listen(process.env.PORT || 8080, function () {
     let port = server.address().port;
     console.log("App now running on port", port);
   });
 });
 
-// Generic error handler used by all endpoints.
+// Generic error handler
 function handleError(res, reason, message, code) {
   console.log("ERROR: " + reason);
   res.status(code || 500).json({
@@ -64,6 +65,16 @@ app.post("/api/employees", function (req, res) {
     } else {
       res.status(201).json(doc.ops[0]);
     }
+  });
+
+  app.get("/api/companies", function (req, res) {
+    db.collection(COMPANIES_COLLECTION).find({}).toArray(function (err, docs) {
+      if (err) {
+        handleError(res, err.message, "Failed to get companies.");
+      } else {
+        res.status(200).json(docs);
+      }
+    });
   });
 
 });

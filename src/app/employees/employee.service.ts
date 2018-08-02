@@ -25,11 +25,40 @@ export class EmployeeService {
       streetAddress: newEmployee.streetAddress,
       city: newEmployee.city,
       postalCode: newEmployee.postalCode,
-      company: newEmployee.company,
+      company: this.fetchCompanyId(newEmployee.company),
       salary: newEmployee.salary,
     };
     console.log(`Inside employee service newEmployee.firstName looks like ${newEmployee.firstName}`);
     return this.http.post<Employee>(this.employeesUrl, employee).pipe(catchError(this.handleError));
+  }
+
+  fetchCompanyId(name) {
+    switch (name) {
+      case 'Apple': {
+        return '5b62a3d5e7179a0733447881';
+        break;
+      }
+      case 'Tesla': {
+        return '5b62a42de7179a073344789f';
+        break;
+      }
+      case 'IBM': {
+        return '5b62a456e7179a07334478a5';
+        break;
+      }
+      case 'Facebook': {
+        return '5b62a46fe7179a07334478b4';
+        break;
+      }
+      case 'General Electric': {
+        return '5b62a483e7179a07334478c2';
+        break;
+      }
+      case 'Twitter': {
+        return '5b62a497e7179a07334478ce';
+        break;
+      }
+    }
   }
 
   getLastEmployee(): Observable<any> {
