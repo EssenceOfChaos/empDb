@@ -35,22 +35,22 @@ export class EmployeeService {
   fetchCompanyId(name) {
     switch (name) {
       case 'Apple': {
-        return '5b62a3d5e7179a0733447881';
+        return 'ObjectId("5b62a3d5e7179a0733447881")';
       }
       case 'Tesla': {
-        return '5b62a42de7179a073344789f';
+        return 'ObjectId("5b62a42de7179a073344789f")';
       }
       case 'IBM': {
-        return '5b62a456e7179a07334478a5';
+        return 'ObjectId("5b62a456e7179a07334478a5")';
       }
       case 'Facebook': {
-        return '5b62a46fe7179a07334478b4';
+        return 'ObjectId("5b62a46fe7179a07334478b4")';
       }
       case 'General Electric': {
-        return '5b62a483e7179a07334478c2';
+        return 'ObjectId("5b62a483e7179a07334478c2")';
       }
       case 'Twitter': {
-        return '5b62a497e7179a07334478ce';
+        return 'ObjectId("5b62a497e7179a07334478ce")';
       }
       default: {
         // statements;

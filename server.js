@@ -43,7 +43,6 @@ function handleError(res, reason, message, code) {
 
 /*  "/api/employees"
  *    GET: finds all employees
- *    POST: creates a new employee
  */
 
 app.get("/api/employees", function (req, res) {
@@ -68,6 +67,10 @@ app.get("/api/companies", function (req, res) {
     }
   });
 });
+
+/*  "/api/employees"
+ *    POST: creates a new employee
+ */
 
 app.post("/api/employees", function (req, res) {
   let newEmployee = req.body;
