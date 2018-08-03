@@ -3,6 +3,7 @@ export class Employee {
   firstName: string;
   lastName: string;
   streetAddress: string;
+  streetAddress2: string;
   city: string;
   state: string;
   postalCode: string;

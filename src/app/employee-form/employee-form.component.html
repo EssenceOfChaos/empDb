@@ -23,8 +23,9 @@
           <mat-form-field class="full-width">
             <textarea matInput placeholder="Street address" required formControlName="streetAddress"></textarea>
           </mat-form-field>
+
           <mat-form-field class="full-width">
-            <textarea matInput placeholder="Address 2"></textarea>
+            <textarea matInput placeholder="Address 2" formControlName="streetAddress2"></textarea>
           </mat-form-field>
         </p>
         <!--City field-->
@@ -88,7 +89,7 @@
       <p>{{lastEmployee.city}}</p>
       <p>{{lastEmployee.postalCode}}</p>
       <p>{{lastEmployee.company}}</p>
-      <p>{{lastEmployee.salary}}</p>
+      <p>{{lastEmployee.salary | currency}}</p>
     </ng-container>
   </div>
 

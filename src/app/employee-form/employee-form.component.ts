@@ -18,6 +18,7 @@ export class EmployeeFormComponent {
     firstName: new FormControl(''),
     lastName: new FormControl('', [Validators.required, Validators.minLength(2)]),
     streetAddress: new FormControl('', [Validators.required]),
+    streetAddress2: new FormControl(''),
     city: new FormControl(''),
     state: new FormControl('', [Validators.required]),
     postalCode: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]),

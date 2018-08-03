@@ -23,6 +23,7 @@ export class EmployeeService {
       firstName: newEmployee.firstName,
       lastName: newEmployee.lastName,
       streetAddress: newEmployee.streetAddress,
+      streetAddress2: newEmployee.streetAddress2,
       city: newEmployee.city,
       postalCode: newEmployee.postalCode,
       company: this.fetchCompanyId(newEmployee.company),
@@ -35,22 +36,22 @@ export class EmployeeService {
   fetchCompanyId(name) {
     switch (name) {
       case 'Apple': {
-        return 'ObjectId("5b62a3d5e7179a0733447881")';
+        return '5b62a3d5e7179a0733447881';
       }
       case 'Tesla': {
-        return 'ObjectId("5b62a42de7179a073344789f")';
+        return '5b62a42de7179a073344789f';
       }
       case 'IBM': {
-        return 'ObjectId("5b62a456e7179a07334478a5")';
+        return '5b62a456e7179a07334478a5';
       }
       case 'Facebook': {
-        return 'ObjectId("5b62a46fe7179a07334478b4")';
+        return '5b62a46fe7179a07334478b4';
       }
       case 'General Electric': {
-        return 'ObjectId("5b62a483e7179a07334478c2")';
+        return '5b62a483e7179a07334478c2';
       }
       case 'Twitter': {
-        return 'ObjectId("5b62a497e7179a07334478ce")';
+        return '5b62a497e7179a07334478ce';
       }
       default: {
         // statements;

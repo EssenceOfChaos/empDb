@@ -74,6 +74,17 @@ app.get("/api/companies", function (req, res) {
 
 app.post("/api/employees", function (req, res) {
   let newEmployee = req.body;
+
+  // db.collection(COMPANIES_COLLECTION).updateOne(
+  //   newEmployee.company, {
+  //     $addToSet: {
+  //       employees: newEmployee._id
+  //     }
+  //   }, {
+  //     upsert: true
+  //   }
+  // )
+
   console.log(`The value of newEmployee is ${newEmployee}`)
   db.collection(EMPLOYEES_COLLECTION).insertOne(newEmployee, function (err, doc) {
     if (err) {
@@ -84,14 +95,12 @@ app.post("/api/employees", function (req, res) {
   });
 
 
-  // app.get("/api/companies", function (req, res) {
-  //   db.collection(COMPANIES_COLLECTION).find({}).toArray(function (err, docs) {
-  //     if (err) {
-  //       handleError(res, err.message, "Failed to get companies.");
-  //     } else {
-  //       res.status(200).json(docs);
-  //     }
-  //   });
-  // });
-
 });
+
+
+
+
+
+
+
+//
