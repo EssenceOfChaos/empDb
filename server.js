@@ -83,7 +83,7 @@ app.post("/api/employees", function (req, res) {
     streetAddress2: newEmployee.streetAddress2,
     city: newEmployee.city,
     postalCode: newEmployee.postalCode,
-    company: newEmployee.toHexString(),
+    company: ObjectID(newEmployee.company),
     salary: newEmployee.salary,
   };
 
