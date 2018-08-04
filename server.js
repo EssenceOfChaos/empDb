@@ -2,7 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongodb = require("mongodb");
 const ObjectID = mongodb.ObjectID;
-const cors = require('cors');
+var BSON = require('mongodb').BSON;
+// const cors = require('cors');
 const EMPLOYEES_COLLECTION = "employees";
 const COMPANIES_COLLECTION = "companies"
 
@@ -74,6 +75,7 @@ app.get("/api/companies", function (req, res) {
 
 app.post("/api/employees", function (req, res) {
   let newEmployee = req.body;
+
   const employee = {
     firstName: newEmployee.firstName,
     lastName: newEmployee.lastName,
@@ -81,9 +83,10 @@ app.post("/api/employees", function (req, res) {
     streetAddress2: newEmployee.streetAddress2,
     city: newEmployee.city,
     postalCode: newEmployee.postalCode,
-    company: ObjectID.createFromHexString(newEmployee),
+    company: new BSON.ObjectID.createFromHexString(newEmployee.company),
     salary: newEmployee.salary,
   };
+
 
   // db.collection(COMPANIES_COLLECTION).updateOne(
   //   newEmployee.company, {
