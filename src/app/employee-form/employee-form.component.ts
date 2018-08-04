@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { Validators, FormControl, FormGroup } from '@angular/forms';
 import { EmployeeService } from '../employees/employee.service';
-import { COMPANIES } from '../companies/companies';
-import { last } from 'rxjs/operators';
 
 @Component({
   selector: 'app-employee-form',
@@ -25,8 +23,6 @@ export class EmployeeFormComponent {
     company: new FormControl('', [Validators.required]),
     salary: new FormControl(''),
   });
-
-  companies = COMPANIES;
 
   states: string[] = [
     'Alabama',
@@ -84,8 +80,7 @@ export class EmployeeFormComponent {
   onSubmit() {
     this.employeeService
       .createEmployee(this.employeeForm.value)
-      .subscribe(res => console.log(`Employee Form Component - Employee created with result: ${res}`));
-    // console.log(this.employeeForm.value);
+      .subscribe(res => console.log(`Employee Form Component - New employee submitted...`));
     this.readBackData();
     this.employeeForm.reset();
     this.submitted = true;

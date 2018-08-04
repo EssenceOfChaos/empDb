@@ -8,17 +8,17 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
   providedIn: 'root',
 })
 export class CompanyService {
-  private companiesUrl = '/api/companies';
+  // private companiesUrl = '/api/companies';
   private salaryDataUrl = '/api/companies/salaries';
   constructor(private http: HttpClient) {}
 
   // get("/api/companies")
-  getCompanies(): Observable<Company[]> {
-    return this.http.get<Company[]>(this.companiesUrl).pipe(
-      retry(3),
-      catchError(this.handleError)
-    );
-  }
+  // getCompanies(): Observable<Company[]> {
+  //   return this.http.get<Company[]>(this.companiesUrl).pipe(
+  //     retry(3),
+  //     catchError(this.handleError)
+  //   );
+  // }
 
   getSalaryData() {
     return this.http.get(this.salaryDataUrl).pipe(
