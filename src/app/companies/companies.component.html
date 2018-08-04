@@ -1,5 +1,9 @@
 <mat-divider></mat-divider>
 <h3>Company Data:</h3>
+<button mat-icon-button color="accent">
+  <mat-icon aria-label="Example icon-button with a heart icon" (click)="refreshData()">refresh</mat-icon>
+</button>
+<br>
 <mat-tab-group *ngFor="let company of salaryData">
   <mat-tab label="Name">
     <ng-template matTabContent>
