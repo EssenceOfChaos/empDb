@@ -83,7 +83,7 @@ app.post("/api/employees", function (req, res) {
     streetAddress2: newEmployee.streetAddress2,
     city: newEmployee.city,
     postalCode: newEmployee.postalCode,
-    company: ObjectID(newEmployee.company),
+    company: new ObjectID(newEmployee.company),
     salary: newEmployee.salary,
   };
 
