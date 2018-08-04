@@ -68,6 +68,31 @@ app.get("/api/companies", function (req, res) {
     }
   });
 });
+/*  "/api/companies/salaries"
+ *    GET: finds all companies
+ */
+app.get("/api/companies/salaries", function (req, res) {
+  db.collection(COMPANIES_COLLECTION).aggregate([{
+    "$lookup": {
+      "from": "employees",
+      "localField": "_id",
+      "foreignField": "company",
+      "as": "employees"
+    }
+  }, {
+    "$addFields": {
+      "totalSalary": {
+        "$sum": "$employees.salary"
+      }
+    }
+  }]).toArray(function (err, docs) {
+    if (err) {
+      handleError(res, err.message, "Failed to get companies.");
+    } else {
+      res.status(200).json(docs);
+    }
+  });
+});
 
 /*  "/api/employees"
  *    POST: creates a new employee
@@ -87,18 +112,6 @@ app.post("/api/employees", function (req, res) {
     salary: newEmployee.salary,
   };
 
-  //ObjectID.createFromHexString(id)
-
-
-  // db.collection(COMPANIES_COLLECTION).updateOne(
-  //   newEmployee.company, {
-  //     $addToSet: {
-  //       employees: newEmployee._id
-  //     }
-  //   }, {
-  //     upsert: true
-  //   }
-  // )
 
   console.log(`The value of newEmployee is ${newEmployee}`)
   db.collection(EMPLOYEES_COLLECTION).insertOne(employee, function (err, doc) {
@@ -109,13 +122,4 @@ app.post("/api/employees", function (req, res) {
     }
   });
 
-
 });
-
-
-
-
-
-
-
-//

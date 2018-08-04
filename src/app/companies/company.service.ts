@@ -9,6 +9,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 })
 export class CompanyService {
   private companiesUrl = '/api/companies';
+  private salaryDataUrl = '/api/companies/salaries';
   constructor(private http: HttpClient) {}
 
   // get("/api/companies")
@@ -19,8 +20,11 @@ export class CompanyService {
     );
   }
 
-  getSalaryExpenses() {
-    return this.http.get(this.companiesUrl).pipe();
+  getSalaryData() {
+    return this.http.get(this.salaryDataUrl).pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
   // General Error Handling Function

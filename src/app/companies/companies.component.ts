@@ -8,12 +8,26 @@ import { CompanyService } from './company.service';
 })
 export class CompaniesComponent implements OnInit {
   companies;
+  salaryData;
+
   constructor(private companiesService: CompanyService) {}
+  // ngOnInit() {
+  //   this.companies = this.companiesService.getCompanies().subscribe(res => {
+  //     if (res) {
+  //       console.log(res);
+  //       this.companies = res;
+  //     }
+  //   });
+  // }
   ngOnInit() {
-    this.companies = this.companiesService.getCompanies().subscribe(res => {
+    this.getSalaryData();
+  }
+
+  getSalaryData() {
+    this.salaryData = this.companiesService.getSalaryData().subscribe(res => {
       if (res) {
         console.log(res);
-        this.companies = res;
+        this.salaryData = res;
       }
     });
   }

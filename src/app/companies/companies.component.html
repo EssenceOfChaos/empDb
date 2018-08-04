@@ -10,9 +10,14 @@
       {{company.symbol}}
     </ng-template>
   </mat-tab>
-  <mat-tab label="Salary Expense">
+  <mat-tab label="Employees">
     <ng-template matTabContent>
       {{company.salary_expense | currency}}
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Salary Expense">
+    <ng-template matTabContent>
+      {{salaryData.totalSalary | currency}}
     </ng-template>
   </mat-tab>
 </mat-tab-group>
