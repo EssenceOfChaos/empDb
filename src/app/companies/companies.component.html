@@ -1,3 +1,4 @@
+<mat-divider></mat-divider>
 <h3>Company Data:</h3>
 <mat-tab-group *ngFor="let company of salaryData">
   <mat-tab label="Name">
@@ -10,9 +11,9 @@
       {{company.symbol}}
     </ng-template>
   </mat-tab>
-  <mat-tab label="Employees">
+  <mat-tab label="Employees" *ngFor="let employee of salaryData.employees">
     <ng-template matTabContent>
-      {{company.salary_expense | currency}}
+      {{employee.firstName}}, {{employee.lastName}} --> Salary: {{employee.salary | currency}}
     </ng-template>
   </mat-tab>
   <mat-tab label="Salary Expense">

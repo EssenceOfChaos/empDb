@@ -10,6 +10,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatDividerModule } from '@angular/material/divider';
+
 @NgModule({
   imports: [CommonModule],
   exports: [
@@ -22,6 +24,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatToolbarModule,
     MatSelectModule,
     MatTabsModule,
+    MatDividerModule,
   ],
   declarations: [],
 })
