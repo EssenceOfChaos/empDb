@@ -8,7 +8,6 @@ import { CompanyService } from './company.service';
 })
 export class CompaniesComponent implements OnInit {
   salaryData;
-  employees;
 
   constructor(private companiesService: CompanyService) {}
 
@@ -21,7 +20,6 @@ export class CompaniesComponent implements OnInit {
       if (res) {
         console.log(res);
         this.salaryData = res;
-        this.employees = this.salaryData.employees;
       }
     });
   }

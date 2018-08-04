@@ -11,11 +11,6 @@
       {{company.symbol}}
     </ng-template>
   </mat-tab>
-  <mat-tab label="Employees" *ngFor="let employee of employees">
-    <ng-template matTabContent>
-      {{employee.firstName}}, {{employee.lastName}} --> Salary: {{employee.salary | currency}}
-    </ng-template>
-  </mat-tab>
   <mat-tab label="Salary Expense">
     <ng-template matTabContent>
       {{company.totalSalary | currency}}

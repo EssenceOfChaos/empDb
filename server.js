@@ -112,8 +112,6 @@ app.post("/api/employees", function (req, res) {
     salary: newEmployee.salary,
   };
 
-
-  console.log(`The value of newEmployee is ${newEmployee}`)
   db.collection(EMPLOYEES_COLLECTION).insertOne(employee, function (err, doc) {
     if (err) {
       handleError(res, err.message, "Failed to create new employee.");
