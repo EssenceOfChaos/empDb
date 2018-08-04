@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { Validators, FormControl, FormGroup } from '@angular/forms';
 import { EmployeeService } from '../employees/employee.service';
-
+import { COMPANIES } from '../companies/companies';
 @Component({
   selector: 'app-employee-form',
   templateUrl: './employee-form.component.html',
   styleUrls: ['./employee-form.component.css'],
 })
 export class EmployeeFormComponent {
+  companies = COMPANIES;
   lastEmployee;
   submitted = false;
   constructor(private employeeService: EmployeeService) {}
