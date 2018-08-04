@@ -74,6 +74,16 @@ app.get("/api/companies", function (req, res) {
 
 app.post("/api/employees", function (req, res) {
   let newEmployee = req.body;
+  const employee = {
+    firstName: newEmployee.firstName,
+    lastName: newEmployee.lastName,
+    streetAddress: newEmployee.streetAddress,
+    streetAddress2: newEmployee.streetAddress2,
+    city: newEmployee.city,
+    postalCode: newEmployee.postalCode,
+    company: ObjectID.createFromHexString(newEmployee),
+    salary: newEmployee.salary,
+  };
 
   // db.collection(COMPANIES_COLLECTION).updateOne(
   //   newEmployee.company, {
@@ -86,7 +96,7 @@ app.post("/api/employees", function (req, res) {
   // )
 
   console.log(`The value of newEmployee is ${newEmployee}`)
-  db.collection(EMPLOYEES_COLLECTION).insertOne(newEmployee, function (err, doc) {
+  db.collection(EMPLOYEES_COLLECTION).insertOne(employee, function (err, doc) {
     if (err) {
       handleError(res, err.message, "Failed to create new employee.");
     } else {
