@@ -7,18 +7,10 @@ import { CompanyService } from './company.service';
   styleUrls: ['./companies.component.css'],
 })
 export class CompaniesComponent implements OnInit {
-  companies;
   salaryData;
 
   constructor(private companiesService: CompanyService) {}
-  // ngOnInit() {
-  //   this.companies = this.companiesService.getCompanies().subscribe(res => {
-  //     if (res) {
-  //       console.log(res);
-  //       this.companies = res;
-  //     }
-  //   });
-  // }
+
   ngOnInit() {
     this.getSalaryData();
   }

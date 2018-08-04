@@ -1,5 +1,5 @@
 <h3>Company Data:</h3>
-<mat-tab-group *ngFor="let company of companies">
+<mat-tab-group *ngFor="let company of salaryData">
   <mat-tab label="Name">
     <ng-template matTabContent>
       {{company.name}}
@@ -17,7 +17,7 @@
   </mat-tab>
   <mat-tab label="Salary Expense">
     <ng-template matTabContent>
-      {{salaryData.totalSalary | currency}}
+      {{company.totalSalary | currency}}
     </ng-template>
   </mat-tab>
 </mat-tab-group>
