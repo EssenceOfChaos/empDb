@@ -4,9 +4,11 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../environments/environment.prod';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { COMPANIES } from '../companies/companies';
 
 @Injectable()
 export class EmployeeService {
+  companies = COMPANIES;
   private employeesUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
