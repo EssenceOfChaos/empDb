@@ -4,7 +4,7 @@
   <mat-icon aria-label="Example icon-button with a heart icon" (click)="refreshData()">refresh</mat-icon>
 </button>
 <br>
-<mat-tab-group *ngFor="let company of salaryData | async">
+<mat-tab-group *ngFor="let company of salaryData">
   <mat-tab label="Name">
     <ng-template matTabContent>
       {{company.name}}
