@@ -32,7 +32,7 @@ export class EmployeeService {
     console.log(`Inside employee service newEmployee.firstName looks like ${newEmployee.firstName}`);
     return this.http.post<Employee>(this.employeesUrl, employee).pipe(catchError(this.handleError));
   }
-
+  // replace company name with _id for document referencing
   fetchCompanyId(name) {
     switch (name) {
       case 'Apple': {
@@ -54,7 +54,7 @@ export class EmployeeService {
         return '5b62a497e7179a07334478ce';
       }
       default: {
-        // statements;
+        // default clause required but never called;
         break;
       }
     }
@@ -74,6 +74,7 @@ export class EmployeeService {
   //   );
   // }
 
+  // generic error handler
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.error.message);
